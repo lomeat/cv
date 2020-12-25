@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { Helmet } from "react-helmet";
 
+import { Layout } from "./Layout";
+
 const API = "https://api.npoint.io/04045c1e2e27829626fc";
 
 export const App = () => {
@@ -23,9 +25,11 @@ export const App = () => {
       <Helmet>
         <title>Michael Filipenko - CV</title>
       </Helmet>
-      <Container>{data.skills}</Container>
+      <Layout direction="row">
+        {data.skills.map((a) => (
+          <span>{a}</span>
+        ))}
+      </Layout>
     </>
   );
 };
-
-const Container = styled.div``;
