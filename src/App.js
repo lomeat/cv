@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import styled from "styled-components";
+import { Helmet } from "react-helmet";
 
-function App() {
+const API = "https://api.npoint.io/04045c1e2e27829626fc";
+
+export const App = () => {
+  const [data, setData] = useState({});
+
+  React.useEffect(() => {
+    const getDataFromApi = async () => {
+      const res = await fetch(API);
+      const data = await res.json();
+
+      setData(data);
+    };
+
+    getDataFromApi();
+  }, [data]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Helmet>
+        <title>Michael Filipenko - CV</title>
+      </Helmet>
+      <Container>{data.skills}</Container>
+    </>
   );
-}
+};
 
-export default App;
+const Container = styled.div``;
