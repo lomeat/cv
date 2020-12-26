@@ -1,8 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { createGlobalStyle } from "styled-components";
+import WebFont from "webfontloader";
 
 import { App } from "./App";
+
+WebFont.load({
+  google: {
+    families: ["Roboto:400,700"],
+  },
+});
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -17,6 +24,7 @@ const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
     user-select: none;
+    font-family: "Roboto", sans-serif;
   }
 `;
 

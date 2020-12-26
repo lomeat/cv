@@ -3,11 +3,12 @@ import styled from "styled-components";
 import { Helmet } from "react-helmet";
 
 import { Layout } from "./Layout";
+import { UserCard } from "./UserCard";
 
 const API = "https://api.npoint.io/04045c1e2e27829626fc";
 
 export const App = () => {
-  const [data, setData] = useState({});
+  const [data, setData] = useState();
 
   React.useEffect(() => {
     const getDataFromApi = async () => {
@@ -18,7 +19,7 @@ export const App = () => {
     };
 
     getDataFromApi();
-  }, [data]);
+  }, []);
 
   return (
     <>
@@ -26,9 +27,7 @@ export const App = () => {
         <title>Michael Filipenko - CV</title>
       </Helmet>
       <Layout direction="row">
-        {data.skills.map((a) => (
-          <span>{a}</span>
-        ))}
+        <UserCard />
       </Layout>
     </>
   );
