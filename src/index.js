@@ -7,7 +7,7 @@ import { App } from "./App";
 
 WebFont.load({
   google: {
-    families: ["Roboto:400,700"],
+    families: ["Roboto:400,500,700"],
   },
 });
 

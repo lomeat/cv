@@ -4,7 +4,7 @@ import { FaTelegramPlane, FaGithub, FaEnvelope } from "react-icons/fa";
 
 import { Card } from "./Card";
 
-export const UserCard = () => {
+export const User = () => {
   return (
     <Card wide row user>
       <InfoWrapper>
@@ -42,15 +42,13 @@ const Img = styled.img`
 const Info = styled.div`
   display: flex;
   flex-direction: column;
-  font-family: "Roboto", sans-serif;
   padding: 0 0 0 10px;
 `;
 
 const Name = styled.div`
   font-size: 20px;
   font-weight: bold;
-  font-family: Alegreya Sans, sans-serif;
-  font-size: 26px;
+  font-size: 24px;
 `;
 
 const Professioon = styled.div`
@@ -58,7 +56,6 @@ const Professioon = styled.div`
   font-size: 16px;
   font-weight: 500;
   color: #ccc;
-  font-family: Roboto, sans-serif;
   @media screen and (max-width: 700px) {
     padding: 10px 0;
   }

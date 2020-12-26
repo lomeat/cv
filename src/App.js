@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import { Helmet } from "react-helmet";
 
 import { Layout } from "./Layout";
-import { UserCard } from "./UserCard";
+import { User } from "./User";
+import { Stack } from "./Stack";
 
 const API = "https://api.npoint.io/04045c1e2e27829626fc";
 
@@ -21,13 +21,25 @@ export const App = () => {
     getDataFromApi();
   }, []);
 
+  if (!data) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <>
       <Helmet>
         <title>Michael Filipenko - CV</title>
       </Helmet>
       <Layout direction="row">
-        <UserCard />
+        <User />
+      </Layout>
+      <Layout direction="row">
+        <Layout direction="column">
+          <Stack stack={data.stack} />
+        </Layout>
+        <Layout direction="column">
+          <Stack stack={data.stack} />
+        </Layout>
       </Layout>
     </>
   );
