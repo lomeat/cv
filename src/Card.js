@@ -11,7 +11,7 @@ export const Card = styled.div`
   flex-direction: ${(props) => (props.row ? "row" : "column")};
   justify-content: ${(props) => (props.user ? "space-between" : "flex-start")};
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 700px) {
     flex-direction: column;
     width: 95vw;
   }
