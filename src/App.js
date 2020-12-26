@@ -4,6 +4,8 @@ import { Helmet } from "react-helmet";
 import { Layout } from "./Layout";
 import { User } from "./User";
 import { Stack } from "./Stack";
+import { About } from "./About";
+import { Work } from "./Work";
 
 const API = "https://api.npoint.io/04045c1e2e27829626fc";
 
@@ -38,7 +40,8 @@ export const App = () => {
           <Stack stack={data.stack} />
         </Layout>
         <Layout direction="column">
-          <Stack stack={data.stack} />
+          <About about={data.about} />
+          <Work work={data.work} />
         </Layout>
       </Layout>
     </>
