@@ -28,7 +28,7 @@ const NameWrapper = styled.div`
 const Count = styled.div`
   color: white;
   padding: 4px 14px;
-  background: #4c84ff;
+  background: #ced1e0;
   border-radius: 20px;
 `;
 
@@ -48,15 +48,15 @@ const TagsWrapper = styled.div`
 const Tag = styled.div`
   color: white;
   font-weight: 500;
-  background: #ced1e0;
+  background: #538bff;
   border-radius: 20px;
   padding: 8px 20px;
   margin: 0 10px 10px 0;
   transition: 0.2s ease;
-  font-weight: 500;
+  font-weight: 400;
 
   &:hover {
-    background: #a5a8b7;
+    background: #2f73ff;
     cursor: pointer;
   }
 `;
