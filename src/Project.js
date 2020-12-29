@@ -4,7 +4,7 @@ import { FaGithub, FaPlay } from "react-icons/fa";
 
 import { Card } from "./Card";
 
-export const Project = ({ links, name, color, image, description }) => {
+export const Project = ({ links, name, color, image, description, stack }) => {
   return (
     <Card project>
       <NameWrapper>
@@ -28,6 +28,7 @@ export const Project = ({ links, name, color, image, description }) => {
         <Image color={color} src={image}></Image>
         <DescriptionLink target="_blank" href={links[1]}>
           {description}
+          <StackText>{stack}</StackText>
         </DescriptionLink>
       </ImageWrapper>
     </Card>
@@ -69,11 +70,9 @@ const Image = styled.img`
   &:hover {
     cursor: pointer;
   }
-  &:hover + p {
+  &:hover + a,
+  &:hover + span {
     display: block;
-  }
-  &:hover span {
-    display: none;
   }
 `;
 
@@ -93,14 +92,22 @@ const DescriptionLink = styled.a`
   text-decoration: none;
   font-size: 16px;
   line-height: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   &:hover {
     background: rgba(0, 0, 0, 0.6);
     color: white;
   }
+
   @media screen and (max-width: 700px) {
     background: rgba(0, 0, 0, 0.5);
     color: white;
   }
+`;
+
+const StackText = styled.span`
+  font-weight: 500;
 `;
 
 const List = styled.div`
