@@ -1,14 +1,27 @@
+// API Example:
+//   "work": [
+//     "Experience title",
+//     {
+//       name: "Company",
+//       value: "from .. to .."
+//     },
+//     ..
+//   ]
+
 import React from "react";
 import styled from "styled-components";
 
 import { Card } from "./Card";
 
 export const Work = ({ work }) => {
+  const title = work[0];
+  const works = work.slice(1, work.length);
+
   return (
     <Card wide>
-      <Header>Work</Header>
+      <Header>{title}</Header>
       <List>
-        {work.map((a) => (
+        {works.map((a) => (
           <Li key={a.name}>
             <strong>{a.name}:</strong> {a.value}
           </Li>
