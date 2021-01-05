@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { FaTelegramPlane, FaGithub, FaEnvelope } from "react-icons/fa";
+import { FaTelegramPlane, FaGithub, FaEnvelope, FaPhone } from "react-icons/fa";
 import Tooltip from "react-tooltip";
 
 import { Card } from "./Card";
@@ -16,6 +16,19 @@ export const User = () => {
         </Info>
       </InfoWrapper>
       <List>
+        <Link
+          data-tip
+          data-for="phone"
+          target="_blank"
+          href="tel:+375333362025"
+          style={{ marginRight: "-4px" }}
+        >
+          <FaPhone size={28} />
+        </Link>
+        <Tooltip id="phone" place="top" effect="solid">
+          Phone: +375 (33) 336-20-25
+        </Tooltip>
+
         <Link
           data-tip
           data-for="telegram"
@@ -97,7 +110,7 @@ const List = styled.div`
 const Link = styled.a`
   width: 40px;
   height: 40px;
-  margin-left: 30px;
+  margin-left: 20px;
   border-radius: 100%;
   transition: 0.1s ease;
   color: #ced1e0;
