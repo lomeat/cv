@@ -19,6 +19,7 @@ const GlobalStyle = createGlobalStyle`
     align-items: center;
     background: #e9ebf2;
     flex-direction: column;
+    padding: 20px 0;
   }
 
   * {

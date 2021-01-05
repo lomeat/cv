@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { FaTelegramPlane, FaGithub, FaEnvelope } from "react-icons/fa";
+import Tooltip from "react-tooltip";
 
 import { Card } from "./Card";
 
@@ -15,15 +16,41 @@ export const User = () => {
         </Info>
       </InfoWrapper>
       <List>
-        <Link target="_blank" href="https://t.me/lomeat">
+        <Link
+          data-tip
+          data-for="telegram"
+          target="_blank"
+          href="https://t.me/lomeat"
+        >
           <FaTelegramPlane size={30} />
         </Link>
-        <Link target="_blank" href="https://github.com/lomeat">
+        <Tooltip id="telegram" place="top" effect="solid">
+          Telegram: @lomeat
+        </Tooltip>
+
+        <Link
+          data-tip
+          data-for="github"
+          target="_blank"
+          href="https://github.com/lomeat"
+        >
           <FaGithub size={30} />
         </Link>
-        <Link target="_blank" href="mailto:lom3at@gmail.com">
+        <Tooltip id="github" place="top" effect="solid">
+          GitHub: lomeat
+        </Tooltip>
+
+        <Link
+          data-tip
+          data-for="email"
+          target="_blank"
+          href="mailto:lom3at@gmail.com"
+        >
           <FaEnvelope size={30} />
         </Link>
+        <Tooltip id="email" place="top" effect="solid">
+          Email: lom3at@gmail.com
+        </Tooltip>
       </List>
     </Card>
   );
