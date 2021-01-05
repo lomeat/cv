@@ -7,8 +7,8 @@ import { Card } from "./Card";
 export const Project = ({ links, name, color, image, description, stack }) => {
   return (
     <Card project>
-      <NameWrapper>
-        <Name links={links}>{name}</Name>
+      <Header>
+        <Title notInProgress={links}>{name}</Title>
         <List>
           {links.length > 1 ? (
             <React.Fragment>
@@ -23,19 +23,19 @@ export const Project = ({ links, name, color, image, description, stack }) => {
             <InProgress>In progress</InProgress>
           )}
         </List>
-      </NameWrapper>
-      <ImageWrapper>
+      </Header>
+      <Body>
         <Image color={color} src={image}></Image>
         <DescriptionLink target="_blank" href={links[1]}>
           {description}
           <StackText>{stack}</StackText>
         </DescriptionLink>
-      </ImageWrapper>
+      </Body>
     </Card>
   );
 };
 
-const NameWrapper = styled.div`
+const Header = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -43,16 +43,35 @@ const NameWrapper = styled.div`
   padding: 20px;
 `;
 
-const Name = styled.h2`
+const Title = styled.h2`
   margin: 0;
   font-size: 24px;
-  color: ${(props) => (props.links ? "black" : "#bebfc4")};
+  color: ${(props) => (props.notInProgress ? "black" : "#bebfc4")};
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 `;
 
-const ImageWrapper = styled.div`
+const List = styled.div`
+  display: flex;
+  padding-left: 10px;
+`;
+
+const Link = styled.a`
+  color: #ced1e0;
+  margin-left: 15px;
+  border-radius: 100%;
+  transition: 0.1s ease;
+  &:hover {
+    color: #a8a9ad;
+    cursor: pointer;
+  }
+  &:first-child {
+    margin: 0;
+  }
+`;
+
+const Body = styled.div`
   position: relative;
   height: 250px;
   width: 100%;
@@ -108,23 +127,6 @@ const DescriptionLink = styled.a`
 
 const StackText = styled.span`
   font-weight: 500;
-`;
-
-const List = styled.div`
-  display: flex;
-  flex-direction: row;
-  padding-left: 10px;
-`;
-
-const Link = styled.a`
-  color: #ced1e0;
-  margin-left: 15px;
-  border-radius: 100%;
-  transition: 0.1s ease;
-  &:hover {
-    color: #a8a9ad;
-    cursor: pointer;
-  }
 `;
 
 const InProgress = styled.span`
