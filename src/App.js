@@ -14,7 +14,10 @@ const API = "https://api.npoint.io/04045c1e2e27829626fc";
 
 export const App = () => {
   const [data, setData] = useState();
-  const [currentTheme, setCurrentTheme] = React.useState(theme.light);
+  const storageTheme = JSON.parse(localStorage.getItem("theme"));
+  const [currentTheme, setCurrentTheme] = React.useState(
+    storageTheme || theme.light
+  );
 
   React.useEffect(() => {
     const getDataFromApi = async () => {
@@ -28,9 +31,11 @@ export const App = () => {
   }, []);
 
   const toggleTheme = () => {
-    setCurrentTheme((state) =>
-      state === theme.light ? theme.dark : theme.light
-    );
+    setCurrentTheme((state) => {
+      const newState = state === theme.light ? theme.dark : theme.light;
+      localStorage.setItem("theme", JSON.stringify(newState));
+      return newState;
+    });
   };
 
   if (!data) {
