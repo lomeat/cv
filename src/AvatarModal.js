@@ -18,7 +18,7 @@ const AvatarImg = styled.img`
 
 const Modal = styled.div`
   position: fixed;
-  z-index: 1;
+  z-index: 3;
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0.8);

@@ -26,9 +26,9 @@ const NameWrapper = styled.div`
 `;
 
 const Count = styled.div`
-  color: white;
+  color: ${(props) => props.theme.countFont};
   padding: 4px 14px;
-  background: #ced1e0;
+  background: ${(props) => props.theme.countBack};
   border-radius: 20px;
 `;
 
@@ -46,9 +46,9 @@ const TagsWrapper = styled.div`
 `;
 
 const Tag = styled.div`
-  color: white;
+  color: ${(props) => props.theme.tagFont};
   font-weight: 500;
-  background: #538bff;
+  background: ${(props) => props.theme.tagBack};
   border-radius: 20px;
   padding: 8px 20px;
   margin: 0 10px 10px 0;

@@ -115,8 +115,7 @@ const Name = styled.div`
 const Professioon = styled.div`
   padding-top: 5px;
   font-size: 16px;
-  font-weight: 500;
-  color: #ccc;
+  font-weight: 400;
   @media screen and (max-width: 700px) {
     padding: 10px 0;
   }
@@ -134,7 +133,7 @@ const Link = styled.a`
   margin-left: 20px;
   border-radius: 100%;
   transition: 0.1s ease;
-  color: #ced1e0;
+  color: ${(props) => props.theme.icon};
   display: flex;
   align-items: center;
   cursor: pointer;

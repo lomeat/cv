@@ -46,10 +46,11 @@ const Header = styled.div`
 const Title = styled.h2`
   margin: 0;
   font-size: 24px;
-  color: ${(props) => (props.notInProgress ? "black" : "#bebfc4")};
+  color: ${(props) => (props.notInProgress ? props.theme.font : "#bebfc4")};
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  transition: 0.2s ease;
 `;
 
 const List = styled.div`
@@ -100,7 +101,6 @@ const DescriptionLink = styled.a`
   width: 100%;
   position: absolute;
   z-index: 2;
-  color: white;
   top: 0;
   left: 0;
   background: transparent;

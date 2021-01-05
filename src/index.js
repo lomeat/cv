@@ -13,19 +13,15 @@ WebFont.load({
 
 const GlobalStyle = createGlobalStyle`
   body {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #e9ebf2;
-    flex-direction: column;
-    padding: 20px 0;
+   padding: 0;
+   margin: 0;
   }
 
   * {
     box-sizing: border-box;
     user-select: none;
     font-family: "Roboto", sans-serif;
+    outline: none;
   }
 `;
 
