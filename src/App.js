@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Helmet } from "react-helmet";
 import styled from "styled-components";
 
 import { Layout } from "./Layout";
@@ -31,9 +30,6 @@ export const App = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Michael Filipenko - CV</title>
-      </Helmet>
       <Layout direction="row">
         <User />
       </Layout>
