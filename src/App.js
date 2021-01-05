@@ -31,7 +31,7 @@ export const App = () => {
   return (
     <>
       <Layout direction="row">
-        <User />
+        <User {...data.user} />
       </Layout>
       <Layout direction="row">
         <Layout direction="column">

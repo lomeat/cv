@@ -4,17 +4,37 @@ import { FaTelegramPlane, FaGithub, FaEnvelope, FaPhone } from "react-icons/fa";
 import Tooltip from "react-tooltip";
 
 import { Card } from "./Card";
+import { AvatarModal } from "./AvatarModal";
 
-export const User = () => {
+export const User = ({ name, profession, avatar }) => {
+  const [isAvatarOpen, setIsAvatarOpen] = React.useState(false);
+
+  const toggleAvatarOpen = () => {
+    setIsAvatarOpen((state) => !state);
+  };
+
   return (
     <Card wide row user>
       <InfoWrapper>
-        <Img src="https://avatars3.githubusercontent.com/u/33469504?s=460&u=29bdfe9c4e60f1d8da2ac6ec66f0d4bad0fab1b7&v=4" />
+        <Img
+          data-tip
+          data-for="avatar"
+          src={avatar}
+          onClick={toggleAvatarOpen}
+        />
+        <Tooltip effect="solid" id="avatar">
+          Click me :)
+        </Tooltip>
         <Info>
-          <Name>Michael Filipenko</Name>
-          <Professioon>Front-end developer</Professioon>
+          <Name>{name}</Name>
+          <Professioon>{profession}</Professioon>
         </Info>
       </InfoWrapper>
+
+      {isAvatarOpen && (
+        <AvatarModal toggleAvatarOpen={toggleAvatarOpen} avatar={avatar} />
+      )}
+
       <List>
         <Link
           data-tip
@@ -77,6 +97,7 @@ const Img = styled.img`
   width: 50px;
   height: 50px;
   border-radius: 100%;
+  cursor: pointer;
 `;
 
 const Info = styled.div`
