@@ -8,13 +8,15 @@ import { CardModal } from "./CardModal";
 
 export const About = ({ about }) => {
   const { isModalOpen, closeModal, openModal } = useModal();
+  const modal = about[0];
+  const data = about.slice(1);
 
   return (
     <>
       <Card wide onClick={openModal} isAnimate>
         <Header>About Me</Header>
         <List>
-          {about.map((a) => (
+          {data.map((a) => (
             <Li key={a.name}>
               <strong>{a.name}:</strong> {a.value}
             </Li>
@@ -22,7 +24,7 @@ export const About = ({ about }) => {
         </List>
       </Card>
       <AnimatePresence exitBeforeEnter>
-        {isModalOpen && <CardModal title="About Me" closeModal={closeModal} />}
+        {isModalOpen && <CardModal {...modal} closeModal={closeModal} />}
       </AnimatePresence>
     </>
   );

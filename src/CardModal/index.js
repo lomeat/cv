@@ -22,7 +22,7 @@ const modalVariants = {
   },
 };
 
-export function CardModal({ closeModal, image, title }) {
+export function CardModal({ closeModal, image, title, description }) {
   return (
     <S.OuterBound
       onClick={closeModal}
@@ -43,7 +43,9 @@ export function CardModal({ closeModal, image, title }) {
         <S.Image src={"https://i.imgur.com/ph2hjOe.jpeg" || image} />
         <S.Container>
           <S.Title>{title}</S.Title>
-          <S.P>Something text here, guys!</S.P>
+          {description.map((value) => (
+            <S.P>{value}</S.P>
+          ))}
         </S.Container>
       </S.Modal>
     </S.OuterBound>
