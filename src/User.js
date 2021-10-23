@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { FaTelegramPlane, FaGithub, FaEnvelope, FaPhone } from "react-icons/fa";
 import Tooltip from "react-tooltip";
+import { AnimatePresence } from "framer-motion";
 
 import { Card } from "./Card";
 import { AvatarModal } from "./AvatarModal";
@@ -31,9 +32,11 @@ export const User = ({ name, profession, avatar }) => {
         </Info>
       </InfoWrapper>
 
-      {isAvatarOpen && (
-        <AvatarModal toggleAvatarOpen={toggleAvatarOpen} avatar={avatar} />
-      )}
+      <AnimatePresence exitBeforeEnter>
+        {isAvatarOpen && (
+          <AvatarModal toggleAvatarOpen={toggleAvatarOpen} avatar={avatar} />
+        )}
+      </AnimatePresence>
 
       <List>
         <Link
