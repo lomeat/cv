@@ -1,7 +1,15 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
-export const Card = styled(motion.div)`
+export function Card(props) {
+  return props.isAnimate ? (
+    <CardWithAnimations {...props} />
+  ) : (
+    <DefaultCard {...props} />
+  );
+}
+
+const DefaultCard = styled(motion.div)`
   background: ${(props) => props.theme.card};
   border-radius: 16px;
   display: flex;
@@ -19,3 +27,8 @@ export const Card = styled(motion.div)`
     width: 95vw;
   }
 `;
+
+const CardWithAnimations = styled(DefaultCard).attrs({
+  whileHover: { scale: 1.1 },
+  whileTap: { scale: 0.9 },
+})``;

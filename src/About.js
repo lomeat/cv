@@ -11,12 +11,7 @@ export const About = ({ about }) => {
 
   return (
     <>
-      <Card
-        wide
-        onClick={openModal}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-      >
+      <Card wide onClick={openModal} isAnimate>
         <Header>About Me</Header>
         <List>
           {about.map((a) => (

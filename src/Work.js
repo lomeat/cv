@@ -1,33 +1,34 @@
-// API Example:
-//   "work": [
-//     "Experience title",
-//     {
-//       name: "Company",
-//       value: "from .. to .."
-//     },
-//     ..
-//   ]
-
 import React from "react";
 import styled from "styled-components";
+import { AnimatePresence } from "framer-motion";
 
 import { Card } from "./Card";
+import { useModal } from "./utils";
+import { CardModal } from "./CardModal";
 
 export const Work = ({ work }) => {
   const title = work[0];
   const works = work.slice(1, work.length);
+  const { isModalOpen, closeModal, openModal } = useModal();
 
   return (
-    <Card wide>
-      <Header>{title}</Header>
-      <List>
-        {works.map((a) => (
-          <Li key={a.name}>
-            <strong>{a.name}:</strong> {a.value}
-          </Li>
-        ))}
-      </List>
-    </Card>
+    <>
+      <Card wide onClick={openModal} isAnimate>
+        <Header>{title}</Header>
+        <List>
+          {works.map((a) => (
+            <Li key={a.name}>
+              <strong>{a.name}:</strong> {a.value}
+            </Li>
+          ))}
+        </List>
+      </Card>
+      <AnimatePresence exitBeforeEnter>
+        {isModalOpen && (
+          <CardModal title="Experience" closeModal={closeModal} />
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 
