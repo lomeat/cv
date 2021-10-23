@@ -20,3 +20,11 @@ export const theme = {
     tagBack: "#538bff",
   },
 };
+
+export const breakpoints = {
+  screen: {
+    mobile: "max-width: 450px",
+    tablet: "max-width: 1000px",
+    small: "max-width: 300px",
+  },
+};

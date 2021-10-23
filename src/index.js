@@ -2,6 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { createGlobalStyle } from "styled-components";
 import WebFont from "webfontloader";
+import "normalize.css";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 import { App } from "./App";
 
@@ -12,11 +14,6 @@ WebFont.load({
 });
 
 const GlobalStyle = createGlobalStyle`
-  body {
-   padding: 0;
-   margin: 0;
-  }
-
   * {
     box-sizing: border-box;
     user-select: none;
@@ -25,10 +22,14 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+const queryClient = new QueryClient();
+
 ReactDOM.render(
   <React.StrictMode>
-    <GlobalStyle />
-    <App />
+    <QueryClientProvider client={queryClient}>
+      <GlobalStyle />
+      <App />
+    </QueryClientProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

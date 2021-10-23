@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import styled, { ThemeProvider } from "styled-components";
+import { useQuery } from "react-query";
 
 import { Layout } from "./Layout";
 import { User } from "./User";
@@ -8,42 +9,19 @@ import { About } from "./About";
 import { Work } from "./Work";
 import { Project } from "./Project";
 import { UtilityButtons } from "./UtilityButtons";
-import { theme } from "./theme";
+import { getData, useTheme } from "./utils";
+import { breakpoints } from "./theme";
 
-const API = "https://api.npoint.io/04045c1e2e27829626fc";
+export function App() {
+  const { data, isLoading } = useQuery("data", getData);
+  const { currentTheme, toggleTheme } = useTheme();
 
-export const App = () => {
-  const [data, setData] = useState();
-  const storageTheme = JSON.parse(localStorage.getItem("theme"));
-  const [currentTheme, setCurrentTheme] = React.useState(
-    storageTheme || theme.light
-  );
-
-  React.useEffect(() => {
-    const getDataFromApi = async () => {
-      const res = await fetch(API);
-      const data = await res.json();
-
-      setData(data);
-    };
-
-    getDataFromApi();
-  }, []);
-
-  const toggleTheme = () => {
-    setCurrentTheme((state) => {
-      const newState = state === theme.light ? theme.dark : theme.light;
-      localStorage.setItem("theme", JSON.stringify(newState));
-      return newState;
-    });
-  };
-
-  if (!data) {
-    return <div>Loading...</div>;
+  if (isLoading) {
+    return <Loader>MICHAEL FILIPENKO</Loader>;
   }
 
   return (
-    <ThemeProvider theme={currentTheme}>
+    <ThemeProvider theme={{ ...currentTheme, ...breakpoints }}>
       <Wrapper>
         <>
           <Layout direction="row" style={{ width: "870px" }}>
@@ -68,7 +46,7 @@ export const App = () => {
       </Wrapper>
     </ThemeProvider>
   );
-};
+}
 
 const Wrapper = styled.div`
   min-height: 100vh;
@@ -88,5 +66,31 @@ const Grid = styled.div`
   @media screen and (max-width: 700px) {
     display: flex;
     flex-direction: column;
+  }
+`;
+
+const Loader = styled.div`
+  width: 180px;
+  height: 250px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-left: -200px;
+  margin-top: -200px;
+  background: transparent;
+  border: 10px solid #54a0ff;
+  border-right: 16px solid #54a0ff;
+  font-size: 100px;
+  font-weight: bold;
+  color: #54a0ff;
+  padding-left: 10px;
+
+  @media (max-width: 1000px) {
+    margin-left: -100px;
+    margin-top: -100px;
+    font-size: 40px;
+    width: 80px;
+    height: 110px;
+    border: 6px solid #54a0ff;
   }
 `;
