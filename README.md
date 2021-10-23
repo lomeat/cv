@@ -6,4 +6,5 @@
 
 - Cute minimalistic interface of accurate cards
 - Short information about me and my pet-projects
-- Adaptive for smartphones
+- Smooth pretty animations
+- All reacting elements are clickable!

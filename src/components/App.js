@@ -12,6 +12,7 @@ import { UtilityButtons } from "./UtilityButtons";
 import { getData } from "../utils/getData";
 import { useTheme } from "../hooks/useTheme";
 import { breakpoints } from "../utils/theme";
+import { AnotherCard } from "../shared/AnotherCard";
 
 export function App() {
   const { data, isLoading, isError } = useQuery("data", getData);
@@ -44,7 +45,7 @@ export function App() {
           </Layout>
           <Grid>
             {data.projects.map((project) => (
-              <Project key={project.name} {...project} />
+              <AnotherCard key={project.name} {...project} />
             ))}
           </Grid>
         </>
@@ -68,6 +69,7 @@ const Wrapper = styled.div`
 const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+
   @media screen and (max-width: 700px) {
     display: flex;
     flex-direction: column;
