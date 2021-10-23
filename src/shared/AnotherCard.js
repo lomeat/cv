@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useModal } from "../hooks/useModal";
 import { CardModal } from "../components/CardModal";
 
-export function AnotherCard({ links, name, color, image, description, stack }) {
+export function AnotherCard({ name, image, description, stack }) {
   const { isModalOpen, closeModal, openModal } = useModal();
   const modalName = name.split(" ")[0];
 
@@ -41,6 +41,8 @@ export const Image = styled.div`
   background-size: 100%;
   background-color: #57606f;
   transition: 0.2s ease;
+  filter: ${({ theme }) =>
+    theme.background === "#000" ? "invert(1)" : "none"};
 `;
 
 export const Wrapper = styled(motion.div)`
@@ -55,7 +57,8 @@ export const Wrapper = styled(motion.div)`
 
   :hover ${Image} {
     height: 100px;
-    filter: opacity(0.5);
+    filter: opacity(0.5)
+      ${({ theme }) => (theme.background === "#000" ? "invert(1)" : "")};
   }
 
   :hover span {
@@ -63,7 +66,7 @@ export const Wrapper = styled(motion.div)`
   }
 
   :hover h3 {
-    color: black;
+    color: ${({ theme }) => theme.font};
     margin: 6px 0 0 0;
   }
 `;
@@ -72,12 +75,11 @@ export const Container = styled.div`
   padding: 8px 14px;
   display: flex;
   flex-direction: column;
-  background: white;
+  background: ${({ theme }) => theme.card};
 `;
 
 export const Title = styled.h3`
   padding: 0;
-  color: white;
   width: 100%;
   transition: 0.2s ease;
 `;
@@ -86,7 +88,8 @@ export const Description = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 120px;
+  height: 140px;
+  padding-bottom: 20px;
 
   span {
     transition: 0.2s ease;

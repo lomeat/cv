@@ -1,8 +1,8 @@
 export const theme = {
   dark: {
-    background: "#222",
-    card: "#444",
-    font: "#ddd",
+    background: "#000",
+    card: "#000",
+    font: "#ccc",
     icon: "#888",
     countFont: "#ccc",
     countBack: "#888",

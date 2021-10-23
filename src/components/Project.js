@@ -123,7 +123,8 @@ const DescriptionButton = styled.a`
   z-index: 2;
   top: 0;
   left: 0;
-  background: transparent;
+  background: ${({ theme }) =>
+    theme.background === "#000" ? "rgba(0,0,0,0.5)" : "transparent"};
   transition: 0.2s ease;
   padding: 20px;
   box-sizing: border-box;

@@ -47,7 +47,12 @@ export function App() {
             {data.projects.map((project) => (
               <Project key={project.name} {...project} />
             ))}
-            <AnotherCard {...data.projects[0]} />
+            <AnotherCard
+              image="https://i1.logomesh.com/270-_-270-_-70-_-portlandenglish.edu/wp-content/uploads/2017/08/FAKE.png"
+              name="Fake Example Card"
+              description="Just test what design version of card is better"
+              stack="JS, React, Framer Motion, styled-components"
+            />
           </Grid>
         </>
       </Wrapper>
