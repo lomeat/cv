@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
-export const Card = styled.div`
+export const Card = styled(motion.div)`
   background: ${(props) => props.theme.card};
   border-radius: 16px;
   display: flex;
@@ -11,8 +12,9 @@ export const Card = styled.div`
   width: ${(props) => (props.wide ? "560px" : "270px")};
   flex-direction: ${(props) => (props.row ? "row" : "column")};
   justify-content: ${(props) => (props.user ? "space-between" : "flex-start")};
+  cursor: pointer;
 
-  @media screen and (max-width: 700px) {
+  @media (${({ theme }) => theme.screen.tablet}) {
     flex-direction: column;
     width: 95vw;
   }

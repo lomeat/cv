@@ -1,20 +1,35 @@
 import React from "react";
 import styled from "styled-components";
+import { AnimatePresence } from "framer-motion";
 
 import { Card } from "./Card";
+import { useModal } from "./utils";
+import { CardModal } from "./CardModal";
 
 export const About = ({ about }) => {
+  const { isModalOpen, closeModal, openModal } = useModal();
+
   return (
-    <Card wide>
-      <Header>About Me</Header>
-      <List>
-        {about.map((a) => (
-          <Li key={a.name}>
-            <strong>{a.name}:</strong> {a.value}
-          </Li>
-        ))}
-      </List>
-    </Card>
+    <>
+      <Card
+        wide
+        onClick={openModal}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+      >
+        <Header>About Me</Header>
+        <List>
+          {about.map((a) => (
+            <Li key={a.name}>
+              <strong>{a.name}:</strong> {a.value}
+            </Li>
+          ))}
+        </List>
+      </Card>
+      <AnimatePresence exitBeforeEnter>
+        {isModalOpen && <CardModal title="About Me" closeModal={closeModal} />}
+      </AnimatePresence>
+    </>
   );
 };
 
