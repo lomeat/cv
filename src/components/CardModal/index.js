@@ -40,7 +40,7 @@ export function CardModal({ closeModal, image, title, description }) {
         exit="close"
         transition={{ duration: 0.3 }}
       >
-        <S.Image src={"https://i.imgur.com/ph2hjOe.jpeg" || image} />
+        <S.Image src={image || "https://i.imgur.com/ph2hjOe.jpeg"} />
         <S.Container>
           <S.Title>{title}</S.Title>
           {description.map((value) => (

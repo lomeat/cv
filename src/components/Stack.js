@@ -11,8 +11,10 @@ export const Stack = ({ stack }) => {
         <Name>Stack</Name>
       </NameWrapper>
       <TagsWrapper>
-        {stack.map((a) => (
-          <Tag key={a}>{a}</Tag>
+        {stack.map((value) => (
+          <Tag key={value.title} target="_blank" href={value.href}>
+            {value.title}
+          </Tag>
         ))}
       </TagsWrapper>
     </Card>
@@ -45,7 +47,7 @@ const TagsWrapper = styled.div`
   flex-wrap: wrap;
 `;
 
-const Tag = styled.div`
+const Tag = styled.a`
   color: ${(props) => props.theme.tagFont};
   font-weight: 500;
   background: ${(props) => props.theme.tagBack};
@@ -54,6 +56,7 @@ const Tag = styled.div`
   margin: 0 10px 10px 0;
   transition: 0.2s ease;
   font-weight: 400;
+  text-decoration: none;
 
   &:hover {
     background: #2f73ff;
