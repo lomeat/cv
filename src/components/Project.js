@@ -1,37 +1,57 @@
 import React from "react";
 import styled from "styled-components";
 import { FaGithub, FaPlay } from "react-icons/fa";
+import { AnimatePresence } from "framer-motion";
 
 import { Card } from "../shared/Card";
+import { useModal } from "../hooks/useModal";
+import { CardModal } from "../components/CardModal";
 
 export const Project = ({ links, name, color, image, description, stack }) => {
+  const { isModalOpen, closeModal, openModal } = useModal();
+
   return (
-    <Card project>
-      <Header>
-        <Title notInProgress={links}>{name}</Title>
-        <List>
-          {links.length > 1 ? (
-            <React.Fragment>
-              <Link target="_blank" href={links[0]}>
-                <FaGithub size={20} />
-              </Link>
-              <Link target="_blank" href={links[1]}>
-                <FaPlay size={20} />
-              </Link>
-            </React.Fragment>
-          ) : (
-            <InProgress>In progress</InProgress>
-          )}
-        </List>
-      </Header>
-      <Body>
-        <Image color={color} src={image}></Image>
-        <DescriptionLink target="_blank" href={links[1]}>
-          {description}
-          <StackText>{stack}</StackText>
-        </DescriptionLink>
-      </Body>
-    </Card>
+    <>
+      <Card project whileHover={{ scale: 1.1 }}>
+        <Header>
+          <Title notInProgress={links} onClick={openModal}>
+            {name}
+          </Title>
+          <List>
+            {links.length > 1 ? (
+              <React.Fragment>
+                <Link target="_blank" href={links[0]}>
+                  <FaGithub size={20} />
+                </Link>
+                <Link target="_blank" href={links[1]}>
+                  <FaPlay size={20} />
+                </Link>
+              </React.Fragment>
+            ) : (
+              <InProgress>In progress</InProgress>
+            )}
+          </List>
+        </Header>
+        <Body>
+          <Image color={color} src={image}></Image>
+          <DescriptionButton onClick={openModal}>
+            {description}
+            <StackText>{stack}</StackText>
+          </DescriptionButton>
+        </Body>
+      </Card>
+      <AnimatePresence exitBeforeEnter>
+        {isModalOpen && (
+          <CardModal
+            links={links}
+            title={name}
+            description={[description]}
+            stack={stack}
+            closeModal={closeModal}
+          />
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 
@@ -96,7 +116,7 @@ const Image = styled.img`
   }
 `;
 
-const DescriptionLink = styled.a`
+const DescriptionButton = styled.a`
   height: 250px;
   width: 100%;
   position: absolute;

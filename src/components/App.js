@@ -45,8 +45,9 @@ export function App() {
           </Layout>
           <Grid>
             {data.projects.map((project) => (
-              <AnotherCard key={project.name} {...project} />
+              <Project key={project.name} {...project} />
             ))}
+            <AnotherCard {...data.projects[0]} />
           </Grid>
         </>
       </Wrapper>
