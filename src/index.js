@@ -5,7 +5,7 @@ import WebFont from "webfontloader";
 import "normalize.css";
 import { QueryClient, QueryClientProvider } from "react-query";
 
-import { App } from "./App";
+import { App } from "./components/App";
 
 WebFont.load({
   google: {

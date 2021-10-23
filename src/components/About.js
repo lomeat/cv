@@ -2,20 +2,19 @@ import React from "react";
 import styled from "styled-components";
 import { AnimatePresence } from "framer-motion";
 
-import { Card } from "./Card";
-import { useModal } from "./utils";
+import { Card } from "../shared/Card";
+import { useModal } from "../hooks/useModal";
 import { CardModal } from "./CardModal";
 
-export const Work = ({ work }) => {
-  const title = work[0];
-  const modal = work[1];
-  const data = work.slice(2, work.length);
+export const About = ({ about }) => {
   const { isModalOpen, closeModal, openModal } = useModal();
+  const modal = about[0];
+  const data = about.slice(1);
 
   return (
     <>
       <Card wide onClick={openModal} isAnimate>
-        <Header>{title}</Header>
+        <Header>About Me</Header>
         <List>
           {data.map((a) => (
             <Li key={a.name}>

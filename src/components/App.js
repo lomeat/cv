@@ -2,22 +2,27 @@ import React from "react";
 import styled, { ThemeProvider } from "styled-components";
 import { useQuery } from "react-query";
 
-import { Layout } from "./Layout";
+import { Layout } from "../shared/Layout";
 import { User } from "./User";
 import { Stack } from "./Stack";
 import { About } from "./About";
 import { Work } from "./Work";
 import { Project } from "./Project";
 import { UtilityButtons } from "./UtilityButtons";
-import { getData, useTheme } from "./utils";
-import { breakpoints } from "./theme";
+import { getData } from "../utils/getData";
+import { useTheme } from "../hooks/useTheme";
+import { breakpoints } from "../utils/theme";
 
 export function App() {
-  const { data, isLoading } = useQuery("data", getData);
+  const { data, isLoading, isError } = useQuery("data", getData);
   const { currentTheme, toggleTheme } = useTheme();
 
   if (isLoading) {
     return <Loader>MICHAEL FILIPENKO</Loader>;
+  }
+
+  if (isError) {
+    return <Error>EЯROЯ_!# @|$|_0011010</Error>;
   }
 
   return (
@@ -93,4 +98,11 @@ const Loader = styled.div`
     height: 110px;
     border: 6px solid #54a0ff;
   }
+`;
+
+const Error = styled(Loader)`
+  color: #ff4757;
+  border-color: #ff4757;
+  width: 172px;
+  border-right: 12px solid #ff4757;
 `;

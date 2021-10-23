@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { FaMoon } from "react-icons/fa";
 import Tooltip from "react-tooltip";
 
-import { Card } from "./Card";
+import { Card } from "../shared/Card";
 
 export const UtilityButtons = ({ toggleTheme }) => {
   return (

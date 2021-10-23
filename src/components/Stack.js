@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import { Card } from "./Card";
+import { Card } from "../shared/Card";
 
 export const Stack = ({ stack }) => {
   return (

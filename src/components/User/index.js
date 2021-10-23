@@ -3,9 +3,9 @@ import { FaTelegramPlane, FaGithub, FaEnvelope, FaPhone } from "react-icons/fa";
 import Tooltip from "react-tooltip";
 import { AnimatePresence } from "framer-motion";
 
-import { Card } from "../Card";
+import { Card } from "../../shared/Card";
 import { AvatarModal } from "./AvatarModal";
-import { useModal } from "../utils";
+import { useModal } from "../../hooks/useModal";
 import * as S from "./styles";
 
 export const User = ({ name, profession, avatar }) => {

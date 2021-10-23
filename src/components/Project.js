@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { FaGithub, FaPlay } from "react-icons/fa";
 
-import { Card } from "./Card";
+import { Card } from "../shared/Card";
 
 export const Project = ({ links, name, color, image, description, stack }) => {
   return (
