@@ -30,32 +30,38 @@ const avatarVariants = {
   },
 };
 
-export const AvatarModal = ({ avatar, toggleAvatarOpen }) => (
-  <OuterBound
-    onClick={toggleAvatarOpen}
-    variants={outerVariants}
-    animate="visible"
-    initial="hidden"
-    exit="hidden"
-  >
-    <AvatarImg
-      src={avatar}
-      variants={avatarVariants}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-      animate="open"
-      initial="close"
-      exit="close"
-    />
-  </OuterBound>
-);
+export function AvatarModal({ avatar, toggleModal }) {
+  return (
+    <OuterBound
+      onClick={toggleModal}
+      variants={outerVariants}
+      animate="visible"
+      initial="hidden"
+      exit="hidden"
+    >
+      <AvatarImg
+        src={avatar}
+        variants={avatarVariants}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        animate="open"
+        initial="close"
+        exit="close"
+      />
+    </OuterBound>
+  );
+}
 
 const AvatarImg = styled(motion.img)`
   width: 500px;
   height: 500px;
   position: absolute;
 
-  @media screen and (max-width: 700px) {
-    width: 95vw;
+  @media (${({ theme }) => theme.screen.mobile}) {
+    width: 100vw;
+    height: 100vw;
+    left: 0 !important;
+    top: 50vw !important;
+    margin: 0 !important;
   }
 `;
 
