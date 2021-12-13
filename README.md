@@ -1,4 +1,4 @@
-# Personal CV portfolio
+# Personal CV portfolio (in work, not ready)
 
 ![visitors](https://visitor-badge.laobi.icu/badge?page_id=lomeat.cv)
 
